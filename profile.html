@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+
+/* Profile Container */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Profile Image */
+.profile-image {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ddd;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Edit Icon (Pencil) */
+.edit-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);  /* Semi-transparent black background */
+  color: white;
+  border-radius: 50%;
+  width: 100%;   /* Make the edit icon cover the whole profile image */
+  height: 100%;  /* Ensure it covers the full image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+
+/* Show edit icon when hovering over the profile image */
+.profile-image:hover .edit-icon {
+  opacity: 1;
+}
+
+/* Input File */
+input[type="file"] {
+  display: none;
+}
+    </style>
+</head>
+<body>
+    <div class=" d-flex flex-column min-vh-100">
+        <div class="d-flex flex-row">
+            <aside id="sidebar" class="text-light py-4 px-3 sidebar">
+                <div class="d-flex align-items-center gap-2">
+                    <!-- <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M7 21L2.7 16.7c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21" />
+                        <path d="M22 21H7" />
+                        <path d="M5 11l9 9" />
+                    </svg> -->
+                    <!-- <h1 class="h4 font-weight-bold heading">face shield</h1> -->
+                    <img id="icon-img" class="icon-img" src="logo (2).PNG" alt="" srcset="">
+                    <button class="menu-toggle active" id="toggleButton" type="button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <nav class="mt-4">
+                    <a href="home.html" id="nav-a-1" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <span class="nav-text">Home</span>
+                    </a>
+                    <div id="nav-menus">
+                        <a href="report.html" id="nav-a-3" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-3a2 2 0 0 1-2-2V2"></path><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"></path><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"></path></svg>
+                            <span class="nav-text">Reports</span>
+                        </a>
+                        <a href="profile.html" id="nav-a-4" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link active">
+                            <!-- <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg> -->
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"></circle>
+                                <path d="M12 14c-4 0-6 2-6 4v2h12v-2c0-2-2-4-6-4z"></path>
+                              </svg>
+                              
+                            <span class="nav-text">Profile</span>
+                        </a>
+                        <a href="home.html" id="nav-a-2" class="nav-a-2 d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>                            
+                            <span class="nav-text">Logout</span>
+                        </a>
+                    </div>
+                    <div id="nav-menus-login" style="display: none;">
+                        <a href="#" id="login-btn" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link" data-bs-toggle="modal" data-bs-target="#formModal">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                <polyline points="10 17 15 12 10 7"></polyline>
+                                <line x1="15" y1="12" x2="3" y2="12"></line>
+                            </svg>
+                            <span class="nav-text">Login/Signup</span>
+                        </a>
+                    </div>
+                </nav>
+            </aside>
+            <main class="flex-grow container py-4 px-3">
+                <section class="row g-3">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card shadow card-custom">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center flex-wrap" style="height: 270px;">
+                                    <div class="d-flex align-items-center">
+                                        <img src="logo.png" alt="Alex Johnson" class="rounded-circle me-3 border img-fluid" width="70" height="70">
+                                        <div>
+                                            <h5 class="mb-3"><b>Admin</b></h5>
+                                            <p class="mb-1">admin@gmail.com</p>
+                                            <small class="text-member">Member since September 5, 2024</small>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 mt-md-0" style="width: 100%; max-width: 200px;">
+                                        <!-- <button class="btn w-100">Edit Profile</button> -->
+                                        <button class="btn w-100" id="profile-btn">Edit Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card shadow card-custom">
+                            <div class="card-header">
+                                <h5><i class="bi bi-bar-chart-fill"></i> Usage Statistics</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <p>Total Analyses</p>
+                                    <p class="fw-bold">2</p>
+                                </div>
+                                <div class="progress mb-3" style="height: 5px;">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%;"></div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Videos</p>
+                                    <p>1</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Images</p>
+                                    <p>1</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Deepfakes Detected</p>
+                                    <p>2</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <p>Accuracy Rate</p>
+                                    <p>98.5%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="row g-3 mt-1">
+                    <div class="col-md-4 col-lg-4">
+                        <div class="card shadow card-custom">
+                            <div class="card-header">
+                                <h5><i class="bi bi-clock-fill"></i> Recent Analyses</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <a href="report.html" class="recent-link">profile_pic.jpg <span class="text-muted float-end">2024-11-30</span></a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <a href="report.html" class="recent-link">interview.mp4 <span class="text-muted float-end">2024-11-29</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="card shadow card-custom h-100">
+                            <div class="card-header">
+                                <h5><i class="bi bi-gear-fill"></i> Account Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <ul class="nav nav-pills" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link-profile active" id="security-tab" data-bs-toggle="tab" data-bs-target="#security" type="button" role="tab" aria-controls="security" aria-selected="true">Security</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content mt-3">
+                                    <div class="tab-pane fade show active" id="security" role="tabpanel" aria-labelledby="security-tab">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <p class="mb-0">Two-Factor Authentication</p>
+                                            <div style="width: 30%;">
+                                           <!-- <button class="btn btn-outline-light">Enable</button> -->
+                                                <button class="btn btn-outline-light" id="enable-2fa-btn">Enable</button>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <p class="mb-0">Change Password</p>
+                                            <div style="width: 30%;">
+                                                <button class="btn btn-outline-light" id="change-password">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal for Two-Factor Authentication -->
+                    <div class="modal fade" id="twoFactorModal" tabindex="-1" aria-labelledby="twoFactorModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="twoFactorModalLabel">Two Factor Authentication</h5>                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <!-- 2fa -->
+                                            <div class="flip-card-front">
+                                                <h3 class="text-center" style="color: #1C1C3B;">Enter 2FA Code</h3><br><br>  
+                                                <form id="loginForm">
+                                                    <div class="input-group">
+                                                        <input required name="password" type="number" id="twofa"  placeholder=" ">
+                                                        <label for="loginPassword">Authentication Code</label>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success">Verify Code</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal for Change-password -->
+                    <div class="modal fade" id="changepasswordModal" tabindex="-1" aria-labelledby="changepasswordModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="changepasswordModalLabel"></h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <!-- change-password -->
+                                            <div class="flip-card-front">
+                                                <h3 class="text-center" style="color: #1C1C3B;">Change Password</h3><br><br>
+                                                <form id="loginForm">
+                                                    <div class="input-group">
+                                                        <input required name="password" type="password" id="loginPassword"  placeholder=" ">
+                                                        <label for="loginPassword">Password</label>
+                                                        <i class="fa fa-eye" aria-hidden="true" id="showHidePassword"
+                                                        style="position: absolute; font-size:20px; right: 10px;
+                                                        top: 25%; cursor: pointer;"></i>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <input required name="password" type="password" id="new-password-code"  placeholder=" ">
+                                                        <label for="new-password-code">New Password</label>
+                                                        <i class="fa fa-eye" aria-hidden="true" id="newPasswrds"
+                                                        style="position: absolute; font-size:20px; right: 10px;
+                                                        top: 25%; cursor: pointer;"></i>
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <input required name="password" type="password" id="confirm-password-code"  placeholder=" ">
+                                                        <label for="confirm-password-code">Confirm Password</label>
+                                                        <i class="fa fa-eye" aria-hidden="true" id="confirmPasswrds"
+                                                        style="position: absolute; font-size:20px; right: 10px;
+                                                        top: 25%; cursor: pointer;"></i>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal for Edit-profile -->
+                    <div class="modal fade" id="editprofileModal" tabindex="-1" aria-labelledby="editprofileModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editprofileModalLabel">Personal Info</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="flip-card">
+                                        <div class="flip-card-inner">
+                                            <!-- Login -->
+                                            <div class="flip-card-front">
+                                                <h3 class="text-center" style="color: #1C1C3B;">Edit Profile</h3>
+                                                <form id="loginForm">
+                                                    <div class="mb-3">
+                                                        <div class="profile-container">
+                                                            <div class="profile-image">
+                                                            <img id="profile-img" src="logo.PNG" alt="Profile Picture">
+                                                            <div class="edit-icon" id="edit-icon">
+                                                                <i class="fa fa-edit"></i>
+                                                            </div>
+                                                            <input type="file" id="file-input" accept="image/*" style="display: none;">
+                                                            </div>
+                                                        </div><br><br>
+                                                        <div class="input-group">
+                                                            <input required name="password" value="Admin" type="text" id="username"  placeholder=" ">
+                                                            <label for="loginPassword">Name</label>
+                                                        </div><div class="input-group">
+                                                            <input required name="password" value="admin@gmail.com" type="email" id="useremail"  placeholder=" ">
+                                                            <label for="loginPassword">Email</label>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success">Save</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </section>
+            </main>
+        </div>
+        <footer class="footer text-muted-foreground py-4 px-3 mt-auto">
+            <div class="container-fluid d-flex justify-content-between">
+                <p class="">&copy; 2024 FACE SHIELD</p>
+                <nav>
+                    <a href="#" class="text-muted text-decoration-none me-3">Privacy</a>
+                    <a href="#" class="text-muted text-decoration-none me-3">Terms</a>
+                    <a href="#" class="text-muted text-decoration-none">Contact</a>
+                </nav>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const enable2FABtn = document.getElementById('enable-2fa-btn');
+        const twoFactorModal = new bootstrap.Modal(document.getElementById('twoFactorModal'));
+
+        enable2FABtn.addEventListener('click', function() {
+            twoFactorModal.show();
+        });
+
+        const changepswdbtn = document.getElementById('change-password');
+        const changepswdModal = new bootstrap.Modal(document.getElementById('changepasswordModal'));
+
+        changepswdbtn.addEventListener('click', function() {
+            changepswdModal.show();
+        });
+
+        const editprofilebtn = document.getElementById('profile-btn');
+        const editprofilechangepswdModal = new bootstrap.Modal(document.getElementById('editprofileModal'));
+
+        editprofilebtn.addEventListener('click', function() {
+            editprofilechangepswdModal.show();
+        });
+
+        // var myModal = new bootstrap.Modal(twoFactorModal, {
+        //     backdrop: 'static',
+        //     keyboard: false
+        // });
+        // JavaScript to handle the file input click event
+        document.getElementById('edit-icon').addEventListener('click', function() {
+        document.getElementById('file-input').click();
+        });
+
+        // Optional: Handle image preview when a file is selected
+        document.getElementById('file-input').addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+            document.getElementById('profile-img').src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+        });
+
+        const showHidePassw = document.getElementById('showHidePassword');
+        const usePassword = document.getElementById('loginPassword');
+
+        showHidePassw.addEventListener('click', function(e) {
+            let showHideAttr = usePassword.getAttribute('type');
+
+            if (showHideAttr === 'password') {
+                showHideAttr = 'text';
+            } else {
+                showHideAttr = 'password';
+            }
+            usePassword.setAttribute('type', showHideAttr);
+            this.classList.toggle('fa-eye-slash');
+        });
+        
+        const showHidPassw = document.getElementById('newPasswrds');
+        const usePassord = document.getElementById('new-password-code');
+
+        showHidPassw.addEventListener('click', function(e) {
+            let showHideAttr = usePassord.getAttribute('type');
+
+            if (showHideAttr === 'password') {
+                showHideAttr = 'text';
+            } else {
+                showHideAttr = 'password';
+            }
+            usePassord.setAttribute('type', showHideAttr);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const showHidePasw = document.getElementById('confirmPasswrds');
+        const uePassword = document.getElementById('confirm-password-code');
+
+        showHidePasw.addEventListener('click', function(e) {
+            let showHideAttr = uePassword.getAttribute('type');
+
+            if (showHideAttr === 'password') {
+                showHideAttr = 'text';
+            } else {
+                showHideAttr = 'password';
+            }
+            uePassword.setAttribute('type', showHideAttr);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const authencode = document.getElementById('twofa');
+        const Password = document.getElementById('two-factor-code');
+
+        authencode.addEventListener('click', function(e) {
+            let showHideAttr = Password.getAttribute('type');
+
+            if (showHideAttr === 'password') {
+                showHideAttr = 'text';
+            } else {
+                showHideAttr = 'password';
+            }
+            Password.setAttribute('type', showHideAttr);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+    </script>
+</body>
+</html>

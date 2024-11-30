@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Shield</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- <div id="typewriter-container">
+        <video id="background-video" autoplay loop muted poster="">
+            <source src="loader_vid_1.mp4" type="video/mp4">
+        </video>
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <div class="container text-center">
+                <h1 class="text-light"><span id="typewriter"></span><span id="cursor">|</span></h1>
+            </div>
+        </div>
+    </div> -->
+    <div id="homeContent" class="home-content visible">
+        <div class=" d-flex flex-column min-vh-100" style="z-index: -1;">
+            <div class="d-flex flex-row">
+                <aside id="sidebar" class="text-light py-4 px-3 sidebar">
+                    <div class="d-flex align-items-center gap-2">
+                        <!-- <svg class="icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M7 21L2.7 16.7c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21" />
+                            <path d="M22 21H7" />
+                            <path d="M5 11l9 9" />
+                        </svg> -->
+                        <!-- <h1 class="h4 font-weight-bold heading">Edith</h1> -->
+                        <img id="icon-img" class="icon-img" src="logo (2).PNG" alt="logo" height="1000" width="100">
+                        <button class="menu-toggle active" id="toggleButton" type="button">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                    <nav class="mt-4">
+                        <a href="#" id="nav-a-1" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link active">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            <span class="nav-text">Home</span>
+                        </a>
+                        <div id="nav-menus" style="display: none;">
+                            <a href="report.html" id="nav-a-3" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-3a2 2 0 0 1-2-2V2"></path><path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z"></path><path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8"></path></svg>
+                                <span class="nav-text">Reports</span>
+                            </a>
+                            <a href="profile.html" id="nav-a-4" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="8" r="4"></circle>
+                                    <path d="M12 14c-4 0-6 2-6 4v2h12v-2c0-2-2-4-6-4z"></path>
+                                  </svg>
+                                  
+                                <!-- <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg> -->
+                                <span class="nav-text">Profile</span>
+                            </a>
+                            <a href="home.html" id="nav-a-2" class="nav-a-2 d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
+                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                    <polyline points="16 17 21 12 16 7"></polyline>
+                                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                                </svg>                            
+                                <span class="nav-text">Logout</span>
+                            </a>
+                        </div>
+                        <div id="nav-menus-login">
+                            <a href="#" id="login-btn" class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link" data-bs-toggle="modal" data-bs-target="#formModal">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                                    <polyline points="10 17 15 12 10 7"></polyline>
+                                    <line x1="15" y1="12" x2="3" y2="12"></line>
+                                </svg>
+                                <span class="nav-text">Login/Signup</span>
+                            </a>
+                        </div>
+                    </nav>
+                </aside>
+
+                <!-- POPUP FORM -->
+                <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true" >
+                    <div class="modal-dialog modal-dialog-centered" style="z-index: 999;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="formModalLabel">Authentication</h5>
+                                <button type="button" id="close-btn" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="flip-card">
+                                    <div class="flip-card-inner"> 
+                                        <!-- Login -->
+                                        <div class="flip-card-front">
+                                            <h3 class="text-center" style="color: #1C1C3B;">Login Form</h3>
+                                            <form id="loginForm">
+                                                <div class="input-group">
+                                                    <input type="email" id="loginEmail" required placeholder=" ">
+                                                    <label for="loginEmail">Email address</label>
+                                                </div>
+                                                <div class="input-group">
+                                                    <input required name="password" type="password" id="loginPassword"  placeholder=" ">
+                                                    <label for="loginPassword">Password</label>
+                                                    <i class="fa fa-eye" aria-hidden="true" id="showHidePassword"
+                                                    style="position: absolute; font-size:20px; right: 10px;
+                                                    top: 25%; cursor: pointer;"></i>
+                                                </div>
+                                                <button type="submit" class="btn w-100">Login</button>
+                                            </form>
+                                            <p class="text-center mt-3" style="color: #1C1C3B;">Don't have an account? <a href="#" id="flipToRegister">Register here</a></p>
+                                        </div>
+                                        <!-- Register -->
+                                        <div class="flip-card-back">
+                                            <h3 class="text-center" style="color: #1C1C3B;">Register Form</h3>
+                                            <form id="registerForm">
+                                                <div class="input-group">
+                                                    <input type="text" id="fullName" required placeholder=" ">
+                                                    <label for="fullName">Full Name</label>
+                                                </div>
+                                                <div class="input-group">
+                                                    <input type="email" id="registerEmail" required placeholder=" ">
+                                                    <label for="registerEmail">Email address</label>
+                                                </div>
+                                                <div class="input-group">
+                                                    <input type="password" id="registerPassword" required placeholder=" ">
+                                                    <label for="registerPassword">Password</label>
+                                                    <i class="fa fa-eye" aria-hidden="true" id="showHidePaswrd"
+                                                    style="position: absolute; font-size:20px; right: 10px;
+                                                    top: 25%; cursor: pointer;"></i>
+                                                </div>
+                                                <div class="input-group">
+                                                    <input type="password" id="confirmPassword" required placeholder=" ">
+                                                    <label for="confirmPassword">Confirm Password</label>
+                                                    <i class="fa fa-eye" aria-hidden="true" id="showHidePasswrds"
+                                                    style="position: absolute; font-size:20px; right: 10px;
+                                                    top: 25%; cursor: pointer;"></i>
+                                                </div>
+                                                <button type="submit" class="btn w-100">Register</button>
+                                            </form>
+                                            <p class="text-center mt-3" style="color: #1C1C3B;">Already have an account? <a href="#" id="flipToLogin">Login here</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- POPUP FORM -->
+
+                <main class="flex-grow container py-4 px-3">
+                    <section class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card shadow card-custom first-card" style="height: 625px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Upload an Image or Video</h5>
+                                    <p class="card-text">Upload an image or video and let Face Shield analyze it for deep fake detection.</p>
+                                    <form id="upload-form">
+                                        <div class="mb-3">
+                                            <label for="media-upload" class="form-label">Select Media Type</label>
+                                            <select id="media-upload" class="form-select shadow-none">
+                                                <option value="" selected>Select media type</option>
+                                                <option value="image">Image</option>
+                                                <option value="video">Video</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="media-file" class="form-label">Choose File</label>
+                                            <input id="media-file" type="file" class="form-control"  accept="image/*,video/*"/>
+                                        </div>
+                                        <!-- <div class="mb-3">
+                                            <label for="video-duration" class="form-label">Video Duration</label>
+                                            <select id="video-duration" class="form-select shadow-none">
+                                                <option value="" selected>Select video duration</option>
+                                                <option value="30">30 seconds</option>
+                                                <option value="60">1 minute</option>
+                                                <option value="120">2 minutes</option>
+                                                <option value="300">5 minutes</option>
+                                            </select>
+                                        </div> -->
+                                        <center>
+                                            <button type="submit" id="upload-media" class="btn" >Upload Media</button>
+                                        </center>
+                                        <br><br><hr>
+                                        <h5 class="card-title">Detailed Analysis Report</h5>
+                                        <p class="card-text">Download the comprehensive report on the deep fake analysis of your uploaded media, including advanced algorithmic detection and computer vision techniques.</p>
+                                        <center>
+                                            <button class="btn ">Download Detailed Report</button>
+                                        </center>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card shadow card-custom" style="height: 625px;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Uploaded Media</h5>
+                                    <div class="d-flex justify-content-center align-items-center bg-muted rounded" style="height: 200px;background-color: #cdcdce;">
+                                        <!-- <video src="deepfake.mp4" height="200px" controls></video> -->
+                                        <img height="200px" src="" id="img1" alt="" srcset="">
+                                        <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bi bi-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="M21 15L17.914 11.914a2 2 0 0 0-2.828 0L6 21" /></svg>
+                                    </div>
+                                    <h6 class="mt-3">Deep Fake Detected: Anomalous Pixel Patterns Identified</h6>
+                                    <div class="d-flex justify-content-center align-items-center bg-muted mt-3 rounded" style="height: 200px;background-color: #cdcdce;">
+                                        <img src="placeholder.svg" id="img" alt="Deep Fake Frame" class="img-fluid" style="height: 200px;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- <section class="row g-3 mt-1">
+                        <div class="col-md-6">
+                            <div class="card shadow card-custom">
+                                <div class="card-body">
+                                    <h5 class="card-title">Detailed Analysis Report</h5>
+                                    <p class="card-text">Download the comprehensive report on the deep fake analysis of your uploaded media, including advanced algorithmic detection and computer vision techniques.</p>
+                                    <center>
+                                        <button class="btn ">Download Detailed Report</button>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                    </section> -->
+                </main>
+            </div>
+            <footer class="footer text-muted-foreground py-4 px-3 mt-auto">
+                <div class="container-fluid d-flex justify-content-between">
+                    <p class="">&copy; 2024 Face Shield</p>
+                    <nav>
+                        <a href="#" class="text-muted text-decoration-none me-3">Privacy</a>
+                        <a href="#" class="text-muted text-decoration-none me-3">Terms</a>
+                        <a href="#" class="text-muted text-decoration-none">Contact</a>
+                    </nav>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+    
+        document.getElementById("upload-media").addEventListener("click", function() {
+            document.getElementById("img1").src = "detected.jpeg";
+            document.getElementById("img").src = "detected.jpeg";
+        });
+    
+        const showHidePass = document.getElementById('showHidePassword');
+        const userPassword = document.getElementById('loginPassword');
+
+        showHidePass.addEventListener('click', function(e) {
+            let showHideAttr = userPassword.getAttribute('type');
+
+            if (showHideAttr === 'password') {
+                showHideAttr = 'text';
+            } else {
+                showHideAttr = 'password';
+            }
+            userPassword.setAttribute('type', showHideAttr);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const showHidePassw = document.getElementById('showHidePaswrd');
+        const usePassword = document.getElementById('registerPassword');
+
+        showHidePassw.addEventListener('click', function(e) {
+            let showHideAttr = usePassword.getAttribute('type');
+
+            if (showHideAttr === 'password') {
+                showHideAttr = 'text';
+            } else {
+                showHideAttr = 'password';
+            }
+            usePassword.setAttribute('type', showHideAttr);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        const shwHidePassw = document.getElementById('showHidePasswrds');
+        const usePasword = document.getElementById('confirmPassword');
+
+        shwHidePassw.addEventListener('click', function(e) {
+            let showHideAttr = usePasword.getAttribute('type');
+
+            if (showHideAttr === 'password') {
+                showHideAttr = 'text';
+               } else {
+                showHideAttr = 'password';
+            }
+            usePasword.setAttribute('type', showHideAttr);
+            this.classList.toggle('fa-eye-slash');
+        });
+
+</script>
+</body>
+</html>
+
